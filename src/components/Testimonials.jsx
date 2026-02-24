@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+git remote set-url origin https://github.com/Tkhaitan17/CA-Nikhil.gitimport React, { useState, useEffect } from 'react';
 import { StarIcon } from '@heroicons/react/24/solid';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
