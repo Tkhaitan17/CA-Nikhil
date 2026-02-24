@@ -41,8 +41,8 @@ function AppContent() {
             <>
               <Hero />
               <HomeServices />
-              <N />
               <Testimonials />
+              <N />
               <Footer />
             </>
           } />

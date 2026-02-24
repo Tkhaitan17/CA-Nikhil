@@ -4,39 +4,51 @@ const CalculatorApp = () => {
   const [activeCalculator, setActiveCalculator] = useState('gst');
 
   const calculators = [
-    { id: 'gst', name: 'GST Calculator', icon: '🧮' },
-    { id: 'income-tax', name: 'Income Tax Calculator', icon: '💰' },
-    { id: 'tds', name: 'TDS Calculator', icon: '📊' },
-    { id: 'emi', name: 'EMI Calculator', icon: '🏠' },
-    { id: 'si', name: 'Simple Interest', icon: '📈' },
-    { id: 'ci', name: 'Compound Interest', icon: '📊' },
+    { id: 'gst', name: 'GST Calculator', icon: '🧮', color: 'from-blue-500 to-blue-600' },
+    { id: 'income-tax', name: 'Income Tax', icon: '💰', color: 'from-green-500 to-green-600' },
+    { id: 'tds', name: 'TDS Calculator', icon: '📊', color: 'from-purple-500 to-purple-600' },
+    { id: 'emi', name: 'EMI Calculator', icon: '🏠', color: 'from-orange-500 to-orange-600' },
+    { id: 'si', name: 'Simple Interest', icon: '📈', color: 'from-red-500 to-red-600' },
+    { id: 'ci', name: 'Compound Interest', icon: '💎', color: 'from-indigo-500 to-indigo-600' },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-center text-blue-800 mb-8">Financial Calculators</h1>
+    <div className="min-h-screen bg-gradient-to-b from-brand-blue-900 via-brand-blue-800 to-brand-blue-900 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-soft"></div>
+      <div className="absolute bottom-20 left-0 w-72 h-72 bg-brand-blue-700 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-soft" style={{ animationDelay: '2s' }}></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16 animate-fade-in-down">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Financial Calculators</h1>
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-brand-blue-300 mx-auto mb-6"></div>
+          <p className="text-lg text-brand-blue-100 max-w-3xl mx-auto">
+            Use our comprehensive financial calculators to plan your finances, calculate taxes, and make informed decisions.
+          </p>
+        </div>
         
         {/* Calculator Menu */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
-          {calculators.map(calc => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+          {calculators.map((calc, idx) => (
             <button
               key={calc.id}
               onClick={() => setActiveCalculator(calc.id)}
-              className={`p-4 rounded-lg font-semibold text-center transition-all duration-300 transform hover:scale-105 ${
+              className={`p-4 rounded-xl font-semibold text-center transition-all duration-300 transform hover:scale-110 animate-fade-in-up ${
                 activeCalculator === calc.id
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-white text-gray-700 shadow border-2 border-gray-200 hover:border-blue-400'
+                  ? `bg-gradient-to-br ${calc.color} text-white shadow-2xl scale-105`
+                  : 'bg-white/10 backdrop-blur-md text-white border border-white/30 hover:border-blue-400/50 hover:bg-white/20'
               }`}
+              style={{ animationDelay: `${idx * 0.1}s` }}
             >
-              <div className="text-2xl mb-1">{calc.icon}</div>
-              <div className="text-sm">{calc.name}</div>
+              <div className="text-3xl mb-2">{calc.icon}</div>
+              <div className="text-sm font-medium">{calc.name}</div>
             </button>
           ))}
         </div>
 
         {/* Calculator Content */}
-        <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl p-8 border border-white/30 animate-fade-in-up">
           {activeCalculator === 'gst' && <GSTCalculator />}
           {activeCalculator === 'income-tax' && <IncomeTaxCalculator />}
           {activeCalculator === 'tds' && <TDSCalculator />}
@@ -144,31 +156,32 @@ const GSTCalculator = () => {
 
   return (
     <div className="p-4">
-      <div className="text-center mb-4">
-        <h2 className="text-2xl font-bold text-blue-800">GST Calculator</h2>
+      <div className="text-center mb-6">
+        <h2 className="text-2xl font-bold text-white mb-2">GST Calculator</h2>
+        <p className="text-brand-blue-200">Calculate IGST, CGST, SGST and CESS with ease</p>
       </div>
       
-      <div className="overflow-x-auto mb-4">
+      <div className="overflow-x-auto mb-6">
         <table className="w-full table-auto border-collapse text-sm">
           <thead>
-            <tr className="bg-blue-50">
-              <th className="p-2 border text-xs font-medium">Type Of Sale</th>
-              <th className="p-2 border text-xs font-medium">Rate OF Tax</th>
-              <th className="p-2 border text-xs font-medium">Taxable Amount</th>
-              <th className="p-2 border text-xs font-medium">Total Tax Amount</th>
-              <th className="p-2 border text-xs font-medium">IGST</th>
-              <th className="p-2 border text-xs font-medium">CGST</th>
-              <th className="p-2 border text-xs font-medium">SGST</th>
-              <th className="p-2 border text-xs font-medium">Rate of Cess</th>
-              <th className="p-2 border text-xs font-medium">CESS</th>
+            <tr className="bg-gradient-to-r from-blue-500/30 to-blue-600/30">
+              <th className="p-3 border border-white/20 text-white text-xs font-semibold">Type Of Sale</th>
+              <th className="p-3 border border-white/20 text-white text-xs font-semibold">Rate OF Tax</th>
+              <th className="p-3 border border-white/20 text-white text-xs font-semibold">Taxable Amount</th>
+              <th className="p-3 border border-white/20 text-white text-xs font-semibold">Total Tax</th>
+              <th className="p-3 border border-white/20 text-white text-xs font-semibold">IGST</th>
+              <th className="p-3 border border-white/20 text-white text-xs font-semibold">CGST</th>
+              <th className="p-3 border border-white/20 text-white text-xs font-semibold">SGST</th>
+              <th className="p-3 border border-white/20 text-white text-xs font-semibold">Cess %</th>
+              <th className="p-3 border border-white/20 text-white text-xs font-semibold">CESS</th>
             </tr>
           </thead>
           <tbody>
-            {rows.map(row => (
-              <tr key={row.id} className="hover:bg-gray-50">
-                <td className="p-1 border">
+            {rows.map((row, idx) => (
+              <tr key={row.id} className="hover:bg-white/5 transition-colors duration-200">
+                <td className="p-2 border border-white/20">
                   <select 
-                    className="w-full p-1 border rounded text-xs"
+                    className="w-full p-2 border border-white/20 rounded bg-white/10 text-white text-xs focus:outline-none focus:border-blue-400"
                     value={row.typeOfSale}
                     onChange={(e) => handleChange(row.id, 'typeOfSale', e.target.value)}
                   >
@@ -177,9 +190,9 @@ const GSTCalculator = () => {
                     ))}
                   </select>
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-white/20">
                   <select 
-                    className="w-full p-1 border rounded text-xs"
+                    className="w-full p-2 border border-white/20 rounded bg-white/10 text-white text-xs focus:outline-none focus:border-blue-400"
                     value={row.rateOfTax}
                     onChange={(e) => handleChange(row.id, 'rateOfTax', e.target.value.replace('%', ''))}
                   >
@@ -188,58 +201,58 @@ const GSTCalculator = () => {
                     ))}
                   </select>
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-white/20">
                   <input 
                     type="number" 
-                    className="w-full p-1 border rounded text-xs"
+                    className="w-full p-2 border border-white/20 rounded bg-white/10 text-white text-xs focus:outline-none focus:border-blue-400"
                     value={row.taxableAmount}
                     onChange={(e) => handleChange(row.id, 'taxableAmount', e.target.value)}
                   />
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-white/20">
                   <input 
                     type="text" 
-                    className="w-full p-1 border rounded bg-gray-100 text-xs"
+                    className="w-full p-2 border border-white/20 rounded bg-white/20 text-white text-xs"
                     value={row.totalTaxAmount}
                     readOnly
                   />
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-white/20">
                   <input 
                     type="text" 
-                    className="w-full p-1 border rounded bg-gray-100 text-xs"
+                    className="w-full p-2 border border-white/20 rounded bg-white/20 text-white text-xs"
                     value={row.igst}
                     readOnly
                   />
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-white/20">
                   <input 
                     type="text" 
-                    className="w-full p-1 border rounded bg-gray-100 text-xs"
+                    className="w-full p-2 border border-white/20 rounded bg-white/20 text-white text-xs"
                     value={row.cgst}
                     readOnly
                   />
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-white/20">
                   <input 
                     type="text" 
-                    className="w-full p-1 border rounded bg-gray-100 text-xs"
+                    className="w-full p-2 border border-white/20 rounded bg-white/20 text-white text-xs"
                     value={row.sgst}
                     readOnly
                   />
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-white/20">
                   <input 
                     type="number" 
-                    className="w-full p-1 border rounded text-xs"
+                    className="w-full p-2 border border-white/20 rounded bg-white/10 text-white text-xs focus:outline-none focus:border-blue-400"
                     value={row.rateOfCess}
                     onChange={(e) => handleChange(row.id, 'rateOfCess', e.target.value)}
                   />
                 </td>
-                <td className="p-1 border">
+                <td className="p-2 border border-white/20">
                   <input 
                     type="text" 
-                    className="w-full p-1 border rounded bg-gray-100 text-xs"
+                    className="w-full p-2 border border-white/20 rounded bg-white/20 text-white text-xs"
                     value={row.cess}
                     readOnly
                   />
@@ -250,36 +263,36 @@ const GSTCalculator = () => {
         </table>
       </div>
       
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-4 text-sm">
-        <div className="p-2 bg-blue-50 rounded">
-          <div className="text-gray-600">Total Amount</div>
-          <div className="font-bold text-lg text-blue-700">{totals.totalAmount.toFixed(2)}</div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
+        <div className="p-3 bg-gradient-to-br from-blue-500/30 to-blue-600/30 rounded-lg border border-blue-400/50 hover:border-blue-300 transition-all duration-300">
+          <div className="text-white/70 text-xs font-medium">Total Amount</div>
+          <div className="font-bold text-lg text-blue-300">₹{totals.totalAmount.toFixed(2)}</div>
         </div>
-        <div className="p-2 bg-blue-50 rounded">
-          <div className="text-gray-600">Total Tax</div>
-          <div className="font-bold text-lg text-blue-700">{totals.totalTax.toFixed(2)}</div>
+        <div className="p-3 bg-gradient-to-br from-green-500/30 to-green-600/30 rounded-lg border border-green-400/50 hover:border-green-300 transition-all duration-300">
+          <div className="text-white/70 text-xs font-medium">Total Tax</div>
+          <div className="font-bold text-lg text-green-300">₹{totals.totalTax.toFixed(2)}</div>
         </div>
-        <div className="p-2 bg-blue-50 rounded">
-          <div className="text-gray-600">Total IGST</div>
-          <div className="font-bold text-lg text-blue-700">{totals.totalIGST.toFixed(2)}</div>
+        <div className="p-3 bg-gradient-to-br from-purple-500/30 to-purple-600/30 rounded-lg border border-purple-400/50 hover:border-purple-300 transition-all duration-300">
+          <div className="text-white/70 text-xs font-medium">Total IGST</div>
+          <div className="font-bold text-lg text-purple-300">₹{totals.totalIGST.toFixed(2)}</div>
         </div>
-        <div className="p-2 bg-blue-50 rounded">
-          <div className="text-gray-600">Total CGST</div>
-          <div className="font-bold text-lg text-blue-700">{totals.totalCGST.toFixed(2)}</div>
+        <div className="p-3 bg-gradient-to-br from-red-500/30 to-red-600/30 rounded-lg border border-red-400/50 hover:border-red-300 transition-all duration-300">
+          <div className="text-white/70 text-xs font-medium">Total CGST</div>
+          <div className="font-bold text-lg text-red-300">₹{totals.totalCGST.toFixed(2)}</div>
         </div>
-        <div className="p-2 bg-blue-50 rounded">
-          <div className="text-gray-600">Total SGST</div>
-          <div className="font-bold text-lg text-blue-700">{totals.totalSGST.toFixed(2)}</div>
+        <div className="p-3 bg-gradient-to-br from-yellow-500/30 to-yellow-600/30 rounded-lg border border-yellow-400/50 hover:border-yellow-300 transition-all duration-300">
+          <div className="text-white/70 text-xs font-medium">Total SGST</div>
+          <div className="font-bold text-lg text-yellow-300">₹{totals.totalSGST.toFixed(2)}</div>
         </div>
-        <div className="p-2 bg-blue-50 rounded">
-          <div className="text-gray-600">Total CESS</div>
-          <div className="font-bold text-lg text-blue-700">{totals.totalCESS.toFixed(2)}</div>
+        <div className="p-3 bg-gradient-to-br from-orange-500/30 to-orange-600/30 rounded-lg border border-orange-400/50 hover:border-orange-300 transition-all duration-300">
+          <div className="text-white/70 text-xs font-medium">Total CESS</div>
+          <div className="font-bold text-lg text-orange-300">₹{totals.totalCESS.toFixed(2)}</div>
         </div>
       </div>
       
       <div className="text-right">
         <button 
-          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-semibold transition"
+          className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
           onClick={handleReset}
         >
           Reset
@@ -318,54 +331,58 @@ const IncomeTaxCalculator = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h2 className="text-2xl font-bold text-blue-800 mb-6">Income Tax Calculator (FY 2025-26)</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <div className="max-w-4xl mx-auto p-6">
+      <h2 className="text-2xl font-bold text-white mb-2">Income Tax Calculator</h2>
+      <p className="text-brand-blue-200 mb-8">FY 2025-26 • New Regime Tax Slabs</p>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Gross Income</label>
+          <label className="block text-white font-medium mb-3">Gross Income (₹)</label>
           <input
             type="number"
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-blue-400 transition-all duration-300"
             value={income}
             onChange={(e) => setIncome(e.target.value)}
             placeholder="Enter gross income"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Deductions (Section 80C, etc.)</label>
+          <label className="block text-white font-medium mb-3">Deductions - Section 80C (₹)</label>
           <input
             type="number"
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-blue-400 transition-all duration-300"
             value={taxDeductions}
             onChange={(e) => setTaxDeductions(e.target.value)}
             placeholder="Enter deductions"
           />
         </div>
       </div>
+      
       <button
         onClick={calculateIncomeTax}
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded font-semibold transition mb-6"
+        className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 mb-8"
       >
-        Calculate Tax
+        Calculate Income Tax
       </button>
+      
       {result && (
-        <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <div className="text-gray-600 text-sm">Taxable Income</div>
-              <div className="text-2xl font-bold text-blue-700">₹{result.taxableIncome.toFixed(0)}</div>
+        <div className="bg-gradient-to-br from-green-500/20 to-green-600/20 p-6 rounded-xl border border-green-400/50">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-white/5 p-4 rounded-lg">
+              <div className="text-white/70 text-sm font-medium mb-2">Taxable Income</div>
+              <div className="text-2xl font-bold text-green-300">₹{result.taxableIncome.toFixed(0)}</div>
             </div>
-            <div>
-              <div className="text-gray-600 text-sm">Income Tax</div>
-              <div className="text-2xl font-bold text-blue-700">₹{result.tax.toFixed(0)}</div>
+            <div className="bg-white/5 p-4 rounded-lg">
+              <div className="text-white/70 text-sm font-medium mb-2">Income Tax</div>
+              <div className="text-2xl font-bold text-yellow-300">₹{result.tax.toFixed(0)}</div>
             </div>
-            <div>
-              <div className="text-gray-600 text-sm">Cess (4%)</div>
-              <div className="text-2xl font-bold text-blue-700">₹{result.cess.toFixed(0)}</div>
+            <div className="bg-white/5 p-4 rounded-lg">
+              <div className="text-white/70 text-sm font-medium mb-2">Cess (4%)</div>
+              <div className="text-2xl font-bold text-orange-300">₹{result.cess.toFixed(0)}</div>
             </div>
-            <div>
-              <div className="text-gray-600 text-sm">Total Tax</div>
-              <div className="text-2xl font-bold text-green-700">₹{result.totalTax.toFixed(0)}</div>
+            <div className="bg-white/5 p-4 rounded-lg border border-green-400/50">
+              <div className="text-white/70 text-sm font-medium mb-2">Total Tax Liability</div>
+              <div className="text-2xl font-bold text-green-300">₹{result.totalTax.toFixed(0)}</div>
             </div>
           </div>
         </div>
@@ -403,23 +420,25 @@ const TDSCalculator = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h2 className="text-2xl font-bold text-blue-800 mb-6">TDS Calculator</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <div className="max-w-4xl mx-auto p-6">
+      <h2 className="text-2xl font-bold text-white mb-2">TDS (Tax Deducted at Source) Calculator</h2>
+      <p className="text-brand-blue-200 mb-8">Calculate TDS on various types of income</p>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Amount</label>
+          <label className="block text-white font-medium mb-3">Amount (₹)</label>
           <input
             type="number"
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-purple-400 transition-all duration-300"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             placeholder="Enter amount"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Type of Income</label>
+          <label className="block text-white font-medium mb-3">Type of Income</label>
           <select
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white focus:outline-none focus:border-purple-400 transition-all duration-300"
             value={type}
             onChange={(e) => setType(e.target.value)}
           >
@@ -432,30 +451,32 @@ const TDSCalculator = () => {
           </select>
         </div>
       </div>
+      
       <button
         onClick={calculateTDS}
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded font-semibold transition mb-6"
+        className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 mb-8"
       >
         Calculate TDS
       </button>
+      
       {result && (
-        <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <div className="text-gray-600 text-sm">Gross Amount</div>
-              <div className="text-2xl font-bold text-blue-700">₹{result.principal.toFixed(0)}</div>
+        <div className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 p-6 rounded-xl border border-purple-400/50">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-white/5 p-4 rounded-lg">
+              <div className="text-white/70 text-sm font-medium mb-2">Gross Amount</div>
+              <div className="text-2xl font-bold text-purple-300">₹{result.principal.toFixed(0)}</div>
             </div>
-            <div>
-              <div className="text-gray-600 text-sm">TDS Rate</div>
-              <div className="text-2xl font-bold text-blue-700">{result.rate}%</div>
+            <div className="bg-white/5 p-4 rounded-lg">
+              <div className="text-white/70 text-sm font-medium mb-2">TDS Rate</div>
+              <div className="text-2xl font-bold text-purple-300">{result.rate}%</div>
             </div>
-            <div>
-              <div className="text-gray-600 text-sm">TDS Amount</div>
-              <div className="text-2xl font-bold text-red-600">₹{result.tds.toFixed(0)}</div>
+            <div className="bg-white/5 p-4 rounded-lg">
+              <div className="text-white/70 text-sm font-medium mb-2">TDS Amount</div>
+              <div className="text-2xl font-bold text-red-300">₹{result.tds.toFixed(0)}</div>
             </div>
-            <div>
-              <div className="text-gray-600 text-sm">Net Amount</div>
-              <div className="text-2xl font-bold text-green-700">₹{result.netAmount.toFixed(0)}</div>
+            <div className="bg-white/5 p-4 rounded-lg border border-purple-400/50">
+              <div className="text-white/70 text-sm font-medium mb-2">Net Amount</div>
+              <div className="text-2xl font-bold text-green-300">₹{result.netAmount.toFixed(0)}</div>
             </div>
           </div>
         </div>
@@ -488,24 +509,26 @@ const EMICalculator = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h2 className="text-2xl font-bold text-blue-800 mb-6">EMI Calculator</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div className="max-w-4xl mx-auto p-6">
+      <h2 className="text-2xl font-bold text-white mb-2">EMI (Equated Monthly Installment) Calculator</h2>
+      <p className="text-brand-blue-200 mb-8">Calculate loan EMI and total interest payable</p>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Loan Amount</label>
+          <label className="block text-white font-medium mb-3">Loan Amount (₹)</label>
           <input
             type="number"
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-orange-400 transition-all duration-300"
             value={principal}
             onChange={(e) => setPrincipal(e.target.value)}
             placeholder="Enter loan amount"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Annual Interest Rate (%)</label>
+          <label className="block text-white font-medium mb-3">Annual Interest Rate (%)</label>
           <input
             type="number"
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-orange-400 transition-all duration-300"
             value={rate}
             onChange={(e) => setRate(e.target.value)}
             placeholder="Enter interest rate"
@@ -513,36 +536,38 @@ const EMICalculator = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Loan Term (Months)</label>
+          <label className="block text-white font-medium mb-3">Loan Term (Months)</label>
           <input
             type="number"
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-orange-400 transition-all duration-300"
             value={months}
             onChange={(e) => setMonths(e.target.value)}
             placeholder="Enter number of months"
           />
         </div>
       </div>
+      
       <button
         onClick={calculateEMI}
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded font-semibold transition mb-6"
+        className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 mb-8"
       >
         Calculate EMI
       </button>
+      
       {result && (
-        <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
+        <div className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 p-6 rounded-xl border border-orange-400/50">
           <div className="grid grid-cols-3 gap-4">
-            <div>
-              <div className="text-gray-600 text-sm">Monthly EMI</div>
-              <div className="text-2xl font-bold text-blue-700">₹{result.emi.toFixed(0)}</div>
+            <div className="bg-white/5 p-4 rounded-lg">
+              <div className="text-white/70 text-sm font-medium mb-2">Monthly EMI</div>
+              <div className="text-2xl font-bold text-orange-300">₹{result.emi.toFixed(0)}</div>
             </div>
-            <div>
-              <div className="text-gray-600 text-sm">Total Interest</div>
-              <div className="text-2xl font-bold text-red-600">₹{result.totalInterest.toFixed(0)}</div>
+            <div className="bg-white/5 p-4 rounded-lg">
+              <div className="text-white/70 text-sm font-medium mb-2">Total Interest</div>
+              <div className="text-2xl font-bold text-red-300">₹{result.totalInterest.toFixed(0)}</div>
             </div>
-            <div>
-              <div className="text-gray-600 text-sm">Total Amount</div>
-              <div className="text-2xl font-bold text-green-700">₹{result.totalPayment.toFixed(0)}</div>
+            <div className="bg-white/5 p-4 rounded-lg border border-orange-400/50">
+              <div className="text-white/70 text-sm font-medium mb-2">Total Amount</div>
+              <div className="text-2xl font-bold text-green-300">₹{result.totalPayment.toFixed(0)}</div>
             </div>
           </div>
         </div>
@@ -573,24 +598,26 @@ const SimpleInterestCalculator = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h2 className="text-2xl font-bold text-blue-800 mb-6">Simple Interest Calculator</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div className="max-w-4xl mx-auto p-6">
+      <h2 className="text-2xl font-bold text-white mb-2">Simple Interest Calculator</h2>
+      <p className="text-brand-blue-200 mb-8">Calculate simple interest on your investments or loans</p>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Principal Amount</label>
+          <label className="block text-white font-medium mb-3">Principal Amount (₹)</label>
           <input
             type="number"
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-red-400 transition-all duration-300"
             value={principal}
             onChange={(e) => setPrincipal(e.target.value)}
             placeholder="Enter principal"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Annual Rate (%)</label>
+          <label className="block text-white font-medium mb-3">Annual Rate (%)</label>
           <input
             type="number"
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-red-400 transition-all duration-300"
             value={rate}
             onChange={(e) => setRate(e.target.value)}
             placeholder="Enter rate"
@@ -598,10 +625,10 @@ const SimpleInterestCalculator = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Time Period (Years)</label>
+          <label className="block text-white font-medium mb-3">Time Period (Years)</label>
           <input
             type="number"
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-red-400 transition-all duration-300"
             value={years}
             onChange={(e) => setYears(e.target.value)}
             placeholder="Enter years"
@@ -609,22 +636,24 @@ const SimpleInterestCalculator = () => {
           />
         </div>
       </div>
+      
       <button
         onClick={calculateSI}
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded font-semibold transition mb-6"
+        className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 mb-8"
       >
-        Calculate
+        Calculate Simple Interest
       </button>
+      
       {result && (
-        <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
+        <div className="bg-gradient-to-br from-red-500/20 to-red-600/20 p-6 rounded-xl border border-red-400/50">
           <div className="grid grid-cols-2 gap-4">
-            <div>
-              <div className="text-gray-600 text-sm">Simple Interest</div>
-              <div className="text-2xl font-bold text-blue-700">₹{result.si.toFixed(2)}</div>
+            <div className="bg-white/5 p-4 rounded-lg">
+              <div className="text-white/70 text-sm font-medium mb-2">Simple Interest</div>
+              <div className="text-2xl font-bold text-red-300">₹{result.si.toFixed(2)}</div>
             </div>
-            <div>
-              <div className="text-gray-600 text-sm">Total Amount</div>
-              <div className="text-2xl font-bold text-green-700">₹{result.amount.toFixed(2)}</div>
+            <div className="bg-white/5 p-4 rounded-lg border border-red-400/50">
+              <div className="text-white/70 text-sm font-medium mb-2">Total Amount</div>
+              <div className="text-2xl font-bold text-green-300">₹{result.amount.toFixed(2)}</div>
             </div>
           </div>
         </div>
@@ -657,24 +686,26 @@ const CompoundInterestCalculator = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h2 className="text-2xl font-bold text-blue-800 mb-6">Compound Interest Calculator</h2>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+    <div className="max-w-4xl mx-auto p-6">
+      <h2 className="text-2xl font-bold text-white mb-2">Compound Interest Calculator</h2>
+      <p className="text-brand-blue-200 mb-8">Calculate compound interest with various compounding frequencies</p>
+      
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Principal Amount</label>
+          <label className="block text-white font-medium mb-3">Principal Amount (₹)</label>
           <input
             type="number"
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-indigo-400 transition-all duration-300"
             value={principal}
             onChange={(e) => setPrincipal(e.target.value)}
             placeholder="Enter principal"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Annual Rate (%)</label>
+          <label className="block text-white font-medium mb-3">Annual Rate (%)</label>
           <input
             type="number"
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-indigo-400 transition-all duration-300"
             value={rate}
             onChange={(e) => setRate(e.target.value)}
             placeholder="Enter rate"
@@ -682,10 +713,10 @@ const CompoundInterestCalculator = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Time Period (Years)</label>
+          <label className="block text-white font-medium mb-3">Time Period (Years)</label>
           <input
             type="number"
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white placeholder-white/50 focus:outline-none focus:border-indigo-400 transition-all duration-300"
             value={years}
             onChange={(e) => setYears(e.target.value)}
             placeholder="Enter years"
@@ -693,9 +724,9 @@ const CompoundInterestCalculator = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Compounded</label>
+          <label className="block text-white font-medium mb-3">Compounding Frequency</label>
           <select
-            className="w-full p-3 border-2 border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+            className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white focus:outline-none focus:border-indigo-400 transition-all duration-300"
             value={frequency}
             onChange={(e) => setFrequency(e.target.value)}
           >
@@ -706,22 +737,24 @@ const CompoundInterestCalculator = () => {
           </select>
         </div>
       </div>
+      
       <button
         onClick={calculateCI}
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded font-semibold transition mb-6"
+        className="w-full bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 mb-8"
       >
-        Calculate
+        Calculate Compound Interest
       </button>
+      
       {result && (
-        <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
+        <div className="bg-gradient-to-br from-indigo-500/20 to-indigo-600/20 p-6 rounded-xl border border-indigo-400/50">
           <div className="grid grid-cols-2 gap-4">
-            <div>
-              <div className="text-gray-600 text-sm">Compound Interest</div>
-              <div className="text-2xl font-bold text-blue-700">₹{result.ci.toFixed(2)}</div>
+            <div className="bg-white/5 p-4 rounded-lg">
+              <div className="text-white/70 text-sm font-medium mb-2">Compound Interest</div>
+              <div className="text-2xl font-bold text-indigo-300">₹{result.ci.toFixed(2)}</div>
             </div>
-            <div>
-              <div className="text-gray-600 text-sm">Total Amount</div>
-              <div className="text-2xl font-bold text-green-700">₹{result.amount.toFixed(2)}</div>
+            <div className="bg-white/5 p-4 rounded-lg border border-indigo-400/50">
+              <div className="text-white/70 text-sm font-medium mb-2">Total Amount</div>
+              <div className="text-2xl font-bold text-green-300">₹{result.amount.toFixed(2)}</div>
             </div>
           </div>
         </div>
