@@ -65,21 +65,16 @@ const FullScreenCarousel = () => {
           alt={captions[currentIndex]}
           className="w-full h-full object-cover"
         />
-        <div className="absolute bottom-8 left-0 right-0 text-center">
-          <p className="text-white text-xl font-bold bg-black bg-opacity-50 inline-block px-4 py-2 rounded">
-            {captions[currentIndex]}
-          </p>
-        </div>
       </div>
 
       {/* Navigation dots */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10 bg-black/30 backdrop-blur-sm px-4 py-3 rounded-full">
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              currentIndex === index ? 'bg-white' : 'bg-gray-400 bg-opacity-70'
+              currentIndex === index ? 'bg-blue-400 w-8' : 'bg-white/50 hover:bg-white/75'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           ></button>
@@ -91,7 +86,7 @@ const FullScreenCarousel = () => {
         onClick={() => {
           goToSlide((currentIndex - 1 + images.length) % images.length);
         }}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 focus:outline-none"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-600 to-blue-500 bg-opacity-70 text-white p-3 rounded-full hover:bg-opacity-100 focus:outline-none transition-all duration-300 hover:scale-110 hover:-translate-x-1"
         aria-label="Previous slide"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,7 +98,7 @@ const FullScreenCarousel = () => {
         onClick={() => {
           goToSlide((currentIndex + 1) % images.length);
         }}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 focus:outline-none"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-500 to-blue-600 bg-opacity-70 text-white p-3 rounded-full hover:bg-opacity-100 focus:outline-none transition-all duration-300 hover:scale-110 hover:translate-x-1"
         aria-label="Next slide"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

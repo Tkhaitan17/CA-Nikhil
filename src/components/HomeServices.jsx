@@ -85,61 +85,61 @@ const HomeServices = () => {
   };
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: 'slategray' }}>
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-brand-blue-800 to-brand-blue-900 relative overflow-hidden" id="services">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-brand-blue-700 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-soft"></div>
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-soft animation-delay-2000"></div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        <div className="text-center mb-16 animate-fade-in-down">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
             Services That We Offer
           </h2>
-          <p className="text-lg text-slate-200 max-w-3xl mx-auto">
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-brand-blue-300 mx-auto mb-6"></div>
+          <p className="text-lg text-brand-blue-100 max-w-3xl mx-auto leading-relaxed">
             Comprehensive tax and financial solutions tailored to meet your business needs with expert guidance and professional excellence.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => (
             <div 
               key={index}
-              className="group bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border border-slate-200"
+              className="group animate-fade-in-up stagger-item bg-white rounded-2xl p-8 hover:shadow-2xl hover:border-blue-400 transform hover:-translate-y-2 transition-all duration-300 border border-gray-100 relative overflow-hidden"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
+              {/* Gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400/0 via-white/5 to-blue-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
               {/* Icon with gradient background */}
-              <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-lg flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 group-hover:shadow-xl transition-all duration-300 relative shadow-lg`}>
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 rounded-xl transition-opacity duration-300"></div>
                 {renderIcon(service.icon)}
               </div>
               
               {/* Service Name */}
-              <h3 className="text-xl font-semibold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+              <h3 className="text-xl font-bold text-brand-blue-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
                 {service.name}
               </h3>
               
               {/* Service Description */}
-              <p className="text-slate-600 text-sm leading-relaxed">
+              <p className="text-slate-600 text-sm leading-relaxed mb-4 group-hover:text-slate-700 transition-colors duration-300">
                 {service.description}
               </p>
-              
-              {/* Hover effect indicator */}
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="flex items-center text-blue-600 text-sm font-medium">
-                  <span>Learn more</span>
-                  <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
             </div>
           ))}
         </div>
 
         {/* View All Services Button */}
-        <div className="text-center">
+        <div className="text-center animate-fade-in-up">
           <button 
             onClick={handleViewAllServices}
-            className="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center px-10 py-4 bg-gradient-to-r from-blue-500 to-brand-blue-600 text-white font-bold text-lg rounded-xl hover:from-blue-600 hover:to-brand-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl group"
           >
             <span>View All Services</span>
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 ml-3 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </button>

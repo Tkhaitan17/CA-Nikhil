@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Example from "./components/navbar";
 import Nav from './components/prenavbar';
-import Carousel from "./components/slider";
+import Hero from "./components/Hero";
 import N from './components/newsletter';
+import Testimonials from './components/Testimonials';
 import Footer from './components/footer';
 import EVisitingCard from './components/EvisitingCard';
 import QueryForm from './components/form';
@@ -31,16 +32,17 @@ function AppContent() {
   const isMainRoute = location.pathname === '/';
   
   return (
-    <div className="bg-slate-600">
+    <div className="bg-gradient-to-b from-brand-blue-900 to-brand-blue-800 min-h-screen">
       <Nav />
       <Example />
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={
             <>
-              <Carousel fade />
+              <Hero />
               <HomeServices />
               <N />
+              <Testimonials />
               <Footer />
             </>
           } />
