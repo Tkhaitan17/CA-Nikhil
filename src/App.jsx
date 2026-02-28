@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import Example from "./components/navbar";
-import Nav from './components/prenavbar';
+import { useEffect } from "react";
+import Navbar from "./components/navbar";
+import PreNavbar from './components/prenavbar';
 import Hero from "./components/Hero";
-import N from './components/newsletter';
 import Testimonials from './components/Testimonials';
 import Footer from './components/footer';
 import EVisitingCard from './components/EvisitingCard';
 import QueryForm from './components/form';
 import ServicesPage from './components/Services';
-import HomeServices from './components/HomeServices'; // New import
-import GSTCalculator from './components/Calculator';
+import HomeServices from './components/HomeServices';
+import CalculatorApp from './components/Calculator';
 import BulletinsPage from './components/Bulletins';
 import UtilitiesPage from "./components/Utilities";
 import ActsPage from "./components/Acts";
@@ -29,12 +29,15 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
-  const isMainRoute = location.pathname === '/';
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   
   return (
-    <div className="bg-gradient-to-b from-brand-blue-900 to-brand-blue-800 min-h-screen">
-      <Nav />
-      <Example />
+    <div className="bg-gradient-to-b from-brand-blue-900 to-brand-blue-800 min-h-screen flex flex-col">
+      <PreNavbar />
+      <Navbar />
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={
@@ -42,23 +45,22 @@ function AppContent() {
               <Hero />
               <HomeServices />
               <Testimonials />
-              <N />
-              <Footer />
             </>
           } />
           <Route path="/query" element={<QueryForm />} /> 
           <Route path="/services" element={<ServicesPage />} /> 
-          <Route path="/EvisitingCard" element={<EVisitingCard />} /> 
-          <Route path="/Calculator" element={<GSTCalculator />} /> 
+          <Route path="/e-visiting-card" element={<EVisitingCard />} /> 
+          <Route path="/calculator" element={<CalculatorApp />} /> 
           <Route path="/knowledge-bank" element={<KnowledgeBankPage />} />
-          <Route path="/Bulletins" element={<BulletinsPage />} /> 
-          <Route path="/Utilities" element={<UtilitiesPage />} /> 
-          <Route path="/Acts" element={<ActsPage />} /> 
-          <Route path="/Rules" element={<RulesPage />} /> 
-          <Route path="/Forms" element={<FormsPage />} /> 
-          <Route path="/About" element={<AboutPage />} />
+          <Route path="/bulletins" element={<BulletinsPage />} /> 
+          <Route path="/utilities" element={<UtilitiesPage />} /> 
+          <Route path="/acts" element={<ActsPage />} /> 
+          <Route path="/rules" element={<RulesPage />} /> 
+          <Route path="/forms" element={<FormsPage />} /> 
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 }

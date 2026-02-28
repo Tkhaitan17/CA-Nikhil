@@ -1,45 +1,38 @@
 import React from 'react';
-import { Facebook, Instagram, LinkedIn, Twitter, Mail, MapPin, Phone, FacebookIcon, InstagramIcon, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
   const services = [
-    { name: 'Tax Planning', href: '#' },
-    { name: 'Audit & Assurance', href: '#' },
-    { name: 'GST Services', href: '#' },
-    { name: 'Business Advisory', href: '#' },
-    { name: 'Financial Reporting', href: '#' },
+    { name: 'Tax Planning' },
+    { name: 'Audit & Assurance' },
+    { name: 'GST Services' },
+    { name: 'Business Advisory' },
+    { name: 'Financial Reporting' },
   ];
 
   const resources = [
-    { name: 'Tax Calculators', href: '#' },
-    { name: 'Forms & Downloads', href: '#' },
-    { name: 'FAQs', href: '#' },
+    { name: 'Tax Calculators' },
+    { name: 'Forms & Downloads' },
+    { name: 'FAQs' },
   ];
 
   const company = [
-    { name: 'About Us', href: '#About' },
-    { name: 'Our Team', href: '#' },
-    { name: 'Careers', href: '#' },
-    { name: 'Client Testimonials', href: '#' },
+    { name: 'About Us' },
+    { name: 'Our Team' },
+    { name: 'Careers' },
+    { name: 'Client Testimonials' },
   ];
 
   const legal = [
-    { name: 'Terms of Service', href: '#' },
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Disclaimer', href: '#' },
-  ];
-
-  const socialLinks = [
-    { icon: FacebookIcon, href: '#', color: 'text-blue-600' },
-    { icon: InstagramIcon, href: '#', color: 'text-pink-500' },
-    { icon: Linkedin, href: '#', color: 'text-blue-700' },
-    { icon: Twitter, href: '#', color: 'text-blue-400' },
+    { name: 'Terms of Service' },
+    { name: 'Privacy Policy' },
+    { name: 'Disclaimer' },
   ];
 
   const contactInfo = [
-    { icon: Mail, text: 'contact@caservices.com', href: 'mailto:contact@caservices.com' },
-    { icon: Phone, text: '+91 98765 43210', href: 'tel:+919876543210' },
-    { icon: MapPin, text: '123 Financial District, Mumbai 400001, India', href: '#' },
+    { icon: Mail, text: 'Nsaraswatandco@gmail.com', href: 'mailto:Nsaraswatandco@gmail.com' },
+    { icon: Phone, text: '+91 97826 91055', href: 'tel:+919782691055' },
+    { icon: MapPin, text: '309, Neelkanth Mall, Jaipur, Rajasthan 302001', href: 'https://maps.app.goo.gl/u4HjLWYAG3a5L8kt9?g_st=aw' },
   ];
 
   return (
@@ -53,23 +46,11 @@ const Footer = () => {
           <div className="col-span-1 animate-fade-in-left">
             <div className="flex items-center mb-6 group">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-brand-blue-600 rounded-full mr-3 group-hover:scale-110 transition-transform duration-300" />
-              <span className="text-2xl font-bold">VINAY NAVEEN & CO.</span>
+              <span className="text-2xl font-bold">N SARASWAT & CO.</span>
             </div>
             <p className="text-brand-blue-100 mb-8 max-w-md leading-relaxed">
-              Providing expert financial guidance and comprehensive accounting solutions to help businesses and individuals navigate the complexities of taxation and financial management.
+              A dedicated team providing comprehensive financial, accounting, and compliance services to businesses, startups, and individuals. We deliver accurate, timely, and practical financial solutions.
             </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className={`${social.color} hover:opacity-100 opacity-75 hover:scale-110 transform transition-all duration-300 p-2 bg-white/10 rounded-full hover:bg-white/20`}
-                  aria-label={`Visit our ${social.icon.name} page`}
-                >
-                  <social.icon className="w-6 h-6" />
-                </a>
-              ))}
-            </div>
           </div>
 
           <div className="col-span-1 lg:col-span-2">
@@ -151,18 +132,18 @@ const Footer = () => {
         <div className="border-t border-brand-blue-700 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-brand-blue-300 text-sm font-medium">
-              © {new Date().getFullYear()} VINAY NAVEEN & CO. All rights reserved.
+              © {new Date().getFullYear()} N SARASWAT & CO. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-brand-blue-300 hover:text-blue-200 text-sm font-medium transition-colors duration-300">
+              <button className="text-brand-blue-300 hover:text-blue-200 text-sm font-medium transition-colors duration-300 bg-none border-none cursor-pointer">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-brand-blue-300 hover:text-blue-200 text-sm font-medium transition-colors duration-300">
+              </button>
+              <button className="text-brand-blue-300 hover:text-blue-200 text-sm font-medium transition-colors duration-300 bg-none border-none cursor-pointer">
                 Terms of Service
-              </a>
-              <a href="#" className="text-brand-blue-300 hover:text-blue-200 text-sm font-medium transition-colors duration-300">
+              </button>
+              <button className="text-brand-blue-300 hover:text-blue-200 text-sm font-medium transition-colors duration-300 bg-none border-none cursor-pointer">
                 Disclaimer
-              </a>
+              </button>
             </div>
           </div>
         </div>

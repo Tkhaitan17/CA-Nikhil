@@ -1,15 +1,13 @@
 import React from "react";
-import { FaPhoneAlt, FaEnvelope, FaWhatsapp, FaInstagram, FaLinkedin, FaFacebook, FaTwitter } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
   // Social media links - Replace these with your actual profile URLs
   const socialLinks = {
-    whatsapp: "https://wa.me/919784306503", // WhatsApp with your phone number
-    instagram: "https://instagram.com/your-instagram-handle", // Replace with your Instagram handle
-    linkedin: "https://linkedin.com/company/your-company", // Replace with your LinkedIn company page
-    facebook: "https://facebook.com/your-facebook-page", // Replace with your Facebook page
-    twitter: "https://twitter.com/your-twitter-handle" // Replace with your Twitter handle
+    whatsapp: "https://wa.me/qr/SW6H7AXYWO6DJ1", // WhatsApp QR link
+    linkedin: "https://www.linkedin.com/in/nikhil-saraswat-6493143b4", // LinkedIn profile
+    maps: "https://maps.app.goo.gl/u4HjLWYAG3a5L8kt9?g_st=aw" // Google Maps location
   };
 
   // Function to handle social media link clicks
@@ -37,7 +35,7 @@ const Navbar = () => {
               />
             </div>
             <div className="text-white text-base sm:text-lg lg:text-xl font-bold tracking-wide">
-              VINAY NAVEEN & CO.
+              N SARASWAT & CO.
               <br />
               <span className="text-brand-blue-300 text-xs sm:text-sm lg:text-base font-semibold">Chartered Accountants</span>
             </div>
@@ -58,16 +56,6 @@ const Navbar = () => {
               <FaWhatsapp className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
 
-            {/* Instagram */}
-            <button
-              onClick={() => handleSocialClick('instagram', socialLinks.instagram)}
-              className="text-white bg-gradient-to-br from-pink-500 via-red-500 to-purple-600 p-2.5 rounded-full hover:shadow-lg transform hover:scale-110 transition-all duration-300 hover:-translate-y-1"
-              aria-label="Follow us on Instagram"
-              title="Instagram"
-            >
-              <FaInstagram className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
-
             {/* LinkedIn */}
             <button
               onClick={() => handleSocialClick('linkedin', socialLinks.linkedin)}
@@ -78,24 +66,16 @@ const Navbar = () => {
               <FaLinkedin className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
 
-            {/* Facebook */}
+            {/* Google Maps */}
             <button
-              onClick={() => handleSocialClick('facebook', socialLinks.facebook)}
-              className="text-white bg-gradient-to-br from-blue-700 to-blue-800 p-2.5 rounded-full hover:from-blue-600 hover:to-blue-700 hover:shadow-lg transform hover:scale-110 transition-all duration-300 hover:-translate-y-1"
-              aria-label="Like us on Facebook"
-              title="Facebook"
+              onClick={() => handleSocialClick('maps', socialLinks.maps)}
+              className="text-white bg-gradient-to-br from-red-500 to-red-600 p-2.5 rounded-full hover:from-red-400 hover:to-red-500 hover:shadow-lg transform hover:scale-110 transition-all duration-300 hover:-translate-y-1"
+              aria-label="View us on Google Maps"
+              title="Google Maps"
             >
-              <FaFacebook className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
-
-            {/* Twitter */}
-            <button
-              onClick={() => handleSocialClick('twitter', socialLinks.twitter)}
-              className="text-white bg-gradient-to-br from-sky-500 to-sky-600 p-2.5 rounded-full hover:from-sky-400 hover:to-sky-500 hover:shadow-lg transform hover:scale-110 transition-all duration-300 hover:-translate-y-1"
-              aria-label="Follow us on Twitter"
-              title="Twitter"
-            >
-              <FaTwitter className="w-5 h-5 sm:w-6 sm:h-6" />
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 13 8 13s8-7.75 8-13c0-4.42-3.58-8-8-8zm0 11c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" />
+              </svg>
             </button>
           </div>
 
@@ -106,20 +86,20 @@ const Navbar = () => {
           <div className="flex flex-col sm:flex-row items-center text-white font-semibold text-sm sm:text-base gap-4 sm:gap-6">
             {/* Phone */}
             <a 
-              href="tel:+919784306503" 
+              href="tel:+919782691055" 
               className="flex items-center group cursor-pointer hover:text-brand-blue-200 transition-colors duration-300"
             >
               <FaPhoneAlt className="mr-2.5 text-brand-blue-300 group-hover:text-brand-blue-100 group-hover:scale-110 transition-all duration-300" />
-              <span className="group-hover:font-bold transition-all duration-300">+91-9784306503</span>
+              <span className="group-hover:font-bold transition-all duration-300">+91 97826 91055</span>
             </a>
             
             {/* Email */}
             <a 
-              href="mailto:vncgzb@gmail.com" 
+              href="mailto:Nsaraswatandco@gmail.com" 
               className="flex items-center group cursor-pointer hover:text-brand-blue-200 transition-colors duration-300"
             >
               <FaEnvelope className="mr-2.5 text-brand-blue-300 group-hover:text-brand-blue-100 group-hover:scale-110 transition-all duration-300" />
-              <span className="group-hover:font-bold transition-all duration-300">vncgzb@gmail.com</span>
+              <span className="group-hover:font-bold transition-all duration-300">Nsaraswatandco@gmail.com</span>
             </a>
           </div>
         </div>

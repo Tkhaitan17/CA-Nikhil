@@ -90,7 +90,7 @@ export default function Navbar() {
           </button>
           
           <Link 
-            to="/EVisitingCard" 
+            to="/e-visiting-card" 
             className="relative group flex items-center px-4 py-2 text-sm font-semibold text-brand-blue-900 rounded-md transition-all duration-300"
           >
             <span className="group-hover:text-brand-blue-700 transition-colors duration-300">E-Visiting Card</span>
@@ -180,7 +180,7 @@ export default function Navbar() {
                 </button>
                 
                 <Link
-                  to="/EVisitingCard"
+                  to="/e-visiting-card"
                   className="block rounded-lg px-4 py-3 text-base font-semibold text-brand-blue-900 hover:bg-blue-50 transition-all duration-200 transform hover:translate-x-1"
                   onClick={() => setMobileMenuOpen(false)}
                 >

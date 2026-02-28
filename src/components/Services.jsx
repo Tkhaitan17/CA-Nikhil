@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Testimonials from './Testimonials';
 
@@ -8,7 +8,7 @@ const ServicesPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const products = [
+  const products = useMemo(() => [
     { 
       name: 'GST Services', 
       description: 'Complete Goods and Services Tax expertise and compliance',
@@ -163,7 +163,7 @@ const ServicesPage = () => {
         'Advanced technology and systems access'
       ]
     },
-  ];
+  ], []);
 
   // Filter products based on search query
   useEffect(() => {
@@ -180,12 +180,7 @@ const ServicesPage = () => {
       });
       setFilteredProducts(filtered);
     }
-  }, [searchQuery]);
-
-  // Initialize filtered products
-  useEffect(() => {
-    setFilteredProducts(products);
-  }, []);
+  }, [searchQuery, products]);
 
   const handleRequestService = (serviceName) => {
     navigate('/query');
