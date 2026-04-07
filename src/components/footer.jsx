@@ -2,31 +2,59 @@ import React from 'react';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
+  const handleNavigation = (href) => {
+    const currentPath = window.location.pathname;
+    if (href === '/') {
+      // Check if we're on home page
+      if (currentPath !== '/') {
+        // Navigate to home page
+        window.location.href = href;
+      } else {
+        // Already on home page, scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else if (href.startsWith('/#')) {
+      // Check if we're on home page
+      if (currentPath !== '/') {
+        // Navigate to home first
+        window.location.href = href;
+      } else {
+        // Already on home page, scroll to element
+        const elementId = href.substring(2);
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    } else if (href.startsWith('/')) {
+      window.location.href = href;
+    }
+  };
   const services = [
-    { name: 'Tax Planning' },
-    { name: 'Audit & Assurance' },
-    { name: 'GST Services' },
-    { name: 'Business Advisory' },
-    { name: 'Financial Reporting' },
+    { name: 'Tax Planning', href: '/query' },
+    { name: 'Audit & Assurance', href: '/query' },
+    { name: 'GST Services', href: '/query' },
+    { name: 'Business Advisory', href: '/query' },
+    { name: 'Financial Reporting', href: '/query' },
   ];
 
   const resources = [
-    { name: 'Tax Calculators' },
-    { name: 'Forms & Downloads' },
-    { name: 'FAQs' },
+    { name: 'Tax Calculators', href: '/calculator' },
+    { name: 'Forms & Downloads', href: '/forms' },
+    { name: 'FAQs', href: '/query' },
   ];
 
   const company = [
-    { name: 'About Us' },
-    { name: 'Our Team' },
-    { name: 'Careers' },
-    { name: 'Client Testimonials' },
+    { name: 'About Us', href: '/' },
+    { name: 'Our Team', href: '/query' },
+    { name: 'Careers', href: '/query' },
+    { name: 'Client Testimonials', href: '/#testimonials' },
   ];
 
   const legal = [
-    { name: 'Terms of Service' },
-    { name: 'Privacy Policy' },
-    { name: 'Disclaimer' },
+    { name: 'Terms of Service', href: '/query' },
+    { name: 'Privacy Policy', href: '/query' },
+    { name: 'Disclaimer', href: '/query' },
   ];
 
   const contactInfo = [
@@ -44,9 +72,21 @@ const Footer = () => {
         {/* Top section with logo, description and social media */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
           <div className="col-span-1 animate-fade-in-left">
-            <div className="flex items-center mb-6 group">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-brand-blue-600 rounded-full mr-3 group-hover:scale-110 transition-transform duration-300" />
-              <span className="text-2xl font-bold">N SARASWAT & CO.</span>
+            <div className="flex items-center mb-6 group cursor-pointer">
+              <button
+                onClick={() => handleNavigation('/')}
+                className="bg-none border-none p-0 cursor-pointer"
+              >
+                <img
+                  src="/logo.png"
+                  alt="Logo"
+                  className="w-20 h-20 rounded-lg mr-3 group-hover:scale-110 transition-transform duration-300 shadow-md"
+                />
+              </button>
+              <div>
+                <div className="text-2xl font-bold">N. SARASWAT & CO.</div>
+                <div className="text-xs sm:text-sm text-brand-blue-300 font-semibold">Chartered Accountants</div>
+              </div>
             </div>
             <p className="text-brand-blue-100 mb-8 max-w-md leading-relaxed">
               A dedicated team providing comprehensive financial, accounting, and compliance services to businesses, startups, and individuals. We deliver accurate, timely, and practical financial solutions.
@@ -60,9 +100,12 @@ const Footer = () => {
                 <ul className="space-y-3">
                   {services.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-brand-blue-200 hover:text-blue-300 transition-colors duration-300 hover:translate-x-1 inline-block transform">
+                      <button 
+                        onClick={() => handleNavigation(item.href)}
+                        className="text-brand-blue-200 hover:text-blue-300 transition-colors duration-300 hover:translate-x-1 inline-block transform bg-none border-none cursor-pointer text-left"
+                      >
                         {item.name}
-                      </a>
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -73,9 +116,12 @@ const Footer = () => {
                 <ul className="space-y-3">
                   {resources.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-brand-blue-200 hover:text-blue-300 transition-colors duration-300 hover:translate-x-1 inline-block transform">
+                      <button 
+                        onClick={() => handleNavigation(item.href)}
+                        className="text-brand-blue-200 hover:text-blue-300 transition-colors duration-300 hover:translate-x-1 inline-block transform bg-none border-none cursor-pointer text-left"
+                      >
                         {item.name}
-                      </a>
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -86,9 +132,21 @@ const Footer = () => {
                 <ul className="space-y-3">
                   {company.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-brand-blue-200 hover:text-blue-300 transition-colors duration-300 hover:translate-x-1 inline-block transform">
-                        {item.name}
-                      </a>
+                      {item.href.startsWith('/#') ? (
+                        <button 
+                          onClick={() => handleNavigation(item.href)}
+                          className="text-brand-blue-200 hover:text-blue-300 transition-colors duration-300 hover:translate-x-1 inline-block transform bg-none border-none cursor-pointer text-left"
+                        >
+                          {item.name}
+                        </button>
+                      ) : (
+                        <button 
+                          onClick={() => handleNavigation(item.href)}
+                          className="text-brand-blue-200 hover:text-blue-300 transition-colors duration-300 hover:translate-x-1 inline-block transform bg-none border-none cursor-pointer text-left"
+                        >
+                          {item.name}
+                        </button>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -99,9 +157,12 @@ const Footer = () => {
                 <ul className="space-y-3">
                   {legal.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-brand-blue-200 hover:text-blue-300 transition-colors duration-300 hover:translate-x-1 inline-block transform">
+                      <button 
+                        onClick={() => handleNavigation(item.href)}
+                        className="text-brand-blue-200 hover:text-blue-300 transition-colors duration-300 hover:translate-x-1 inline-block transform bg-none border-none cursor-pointer text-left"
+                      >
                         {item.name}
-                      </a>
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -132,16 +193,16 @@ const Footer = () => {
         <div className="border-t border-brand-blue-700 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-brand-blue-300 text-sm font-medium">
-              © {new Date().getFullYear()} N SARASWAT & CO. All rights reserved.
+              © {new Date().getFullYear()} N. SARASWAT & CO. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <button className="text-brand-blue-300 hover:text-blue-200 text-sm font-medium transition-colors duration-300 bg-none border-none cursor-pointer">
+              <button onClick={() => handleNavigation('/query')} className="text-brand-blue-300 hover:text-blue-200 text-sm font-medium transition-colors duration-300 bg-none border-none cursor-pointer">
                 Privacy Policy
               </button>
-              <button className="text-brand-blue-300 hover:text-blue-200 text-sm font-medium transition-colors duration-300 bg-none border-none cursor-pointer">
+              <button onClick={() => handleNavigation('/query')} className="text-brand-blue-300 hover:text-blue-200 text-sm font-medium transition-colors duration-300 bg-none border-none cursor-pointer">
                 Terms of Service
               </button>
-              <button className="text-brand-blue-300 hover:text-blue-200 text-sm font-medium transition-colors duration-300 bg-none border-none cursor-pointer">
+              <button onClick={() => handleNavigation('/query')} className="text-brand-blue-300 hover:text-blue-200 text-sm font-medium transition-colors duration-300 bg-none border-none cursor-pointer">
                 Disclaimer
               </button>
             </div>
