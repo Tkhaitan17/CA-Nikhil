@@ -31,7 +31,7 @@ const EVisitingCard = () => {
                   CA
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold text-white leading-tight">N SARASWAT & CO.</h1>
+                  <h1 className="text-lg font-bold text-white leading-tight">N. SARASWAT & CO.</h1>
                   <p className="text-brand-blue-100 text-sm font-semibold">CHARTERED ACCOUNTANTS</p>
                 </div>
               </div>
@@ -42,7 +42,7 @@ const EVisitingCard = () => {
                 <img src="/jiju.jpeg" alt="Profile of CA Nikhil Saraswat" className="w-28 h-28 object-cover" />
               </div>
               <h2 className="text-white font-bold text-lg text-center">CA Nikhil Saraswat</h2>
-              <p className="text-brand-blue-200 text-sm mt-1 font-semibold">Managing Partner</p>
+              <p className="text-brand-blue-200 text-sm mt-1 font-semibold">Owner</p>
             </div>
 
             {/* Contact Details */}
@@ -57,7 +57,7 @@ const EVisitingCard = () => {
                 <svg className="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                 </svg>
-                <a href="mailto:Nsaraswatandco@gmail.com" className="text-sm hover:text-blue-300 transition-colors group-hover:text-white">Nsaraswatandco@gmail.com</a>
+                <a href="mailto:Nsaraswatandco@gmail.com" className="text-sm hover:text-blue-300 transition-colors group-hover:text-white cursor-pointer bg-none border-none">Nsaraswatandco@gmail.com</a>
               </div>
               <div className="flex items-center gap-3 hover:translate-x-1 transition-transform duration-300 group">
                 <svg className="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -119,18 +119,18 @@ const EVisitingCard = () => {
             <div className="space-y-6">
               <div>
                 <p className="font-bold text-blue-300 mb-1 text-lg">CA Nikhil Saraswat</p>
-                <p className="text-brand-blue-200 font-semibold">Managing Partner</p>
+                <p className="text-brand-blue-200 font-semibold">Owner</p>
               </div>
               
               <div>
                 <p className="text-brand-blue-100 text-sm leading-relaxed">
-                  <span className="font-semibold text-blue-300">Qualifications:</span> B.Com, CA (ICAI), Specialized in Tax & Corporate Services
+                  <span className="font-semibold text-blue-300">Qualifications:</span> B.Com, CA (ICAI)
                 </p>
               </div>
               
               <div className="border-l-2 border-blue-400 pl-4 py-2 bg-white/5 rounded">
                 <p className="text-brand-blue-100 text-sm leading-relaxed">
-                  N Saraswat & Co. is a team of dedicated professionals providing comprehensive financial, accounting, and compliance services to businesses, startups, and individuals. Led by CA Nikhil Saraswat, the firm brings strong experience in audit, taxation, and financial management, including exposure to international accounting practices.
+                  N. Saraswat & Co. is a team of dedicated professionals providing comprehensive financial, accounting, and compliance services to businesses, startups, and individuals. Led by CA Nikhil Saraswat, the firm brings strong experience in accounting, audit, taxation, and financial management.
                 </p>
               </div>
               

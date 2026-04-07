@@ -1,5 +1,5 @@
 "use client";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import {
   Dialog,
@@ -15,25 +15,6 @@ import {
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
-
-  // Function to handle smooth scrolling to sections
-  const handleScrollToSection = (sectionId) => {
-    // If we're not on the home page, navigate to home first
-    if (location.pathname !== '/') {
-      window.location.href = `/#${sectionId}`;
-      return;
-    }
-    
-    // If we're on the home page, scroll smoothly
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  };
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md border-b-2 border-brand-blue-200">
@@ -58,10 +39,10 @@ export default function Navbar() {
           <Link 
             to="/" 
             className="relative group flex items-center px-4 py-2 text-sm font-semibold text-brand-blue-900 rounded-md transition-all duration-300"
-            aria-label="Go to home page"
+            aria-label="Go to About Us section"
           >
             <HomeIcon className="h-5 w-5 mr-2 text-brand-blue-600 group-hover:text-brand-blue-700 transition-colors duration-300" aria-hidden="true" />
-            <span className="group-hover:text-brand-blue-700 transition-colors duration-300">Home</span>
+            <span className="group-hover:text-brand-blue-700 transition-colors duration-300">About Us</span>
             <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-blue-600 to-blue-400 group-hover:w-full transition-all duration-300 rounded-full"></span>
           </Link>
 
@@ -81,14 +62,6 @@ export default function Navbar() {
             <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-blue-600 to-blue-400 group-hover:w-full transition-all duration-300 rounded-full"></span>
           </Link>
 
-          <button
-            onClick={() => handleScrollToSection('about')}
-            className="relative group flex items-center px-4 py-2 text-sm font-semibold text-brand-blue-900 rounded-md transition-all duration-300 cursor-pointer"
-          >
-            <span className="group-hover:text-brand-blue-700 transition-colors duration-300">About Us</span>
-            <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-blue-600 to-blue-400 group-hover:w-full transition-all duration-300 rounded-full"></span>
-          </button>
-          
           <Link 
             to="/e-visiting-card" 
             className="relative group flex items-center px-4 py-2 text-sm font-semibold text-brand-blue-900 rounded-md transition-all duration-300"
@@ -97,13 +70,15 @@ export default function Navbar() {
             <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-blue-600 to-blue-400 group-hover:w-full transition-all duration-300 rounded-full"></span>
           </Link>
           
-          <button
-            onClick={() => handleScrollToSection('news')}
+          <a 
+            href="https://www.icai.org/category/announcements"
+            target="_blank"
+            rel="noopener noreferrer"
             className="relative group flex items-center px-4 py-2 text-sm font-semibold text-brand-blue-900 rounded-md transition-all duration-300 cursor-pointer"
           >
             <span className="group-hover:text-brand-blue-700 transition-colors duration-300">News & Updates</span>
             <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-brand-blue-600 to-blue-400 group-hover:w-full transition-all duration-300 rounded-full"></span>
-          </button>
+          </a>
           
           <Link 
             to="/query" 
@@ -145,11 +120,11 @@ export default function Navbar() {
                   to="/"
                   className="block rounded-lg px-4 py-3 text-base font-semibold text-brand-blue-900 bg-blue-50 hover:bg-blue-100 transition-all duration-200 transform hover:translate-x-1"
                   onClick={() => setMobileMenuOpen(false)}
-                  aria-label="Go to home page"
+                  aria-label="Go to About Us section"
                 >
                   <div className="flex items-center">
                     <HomeIcon className="h-5 w-5 mr-3 text-brand-blue-600" aria-hidden="true" />
-                    Home
+                    About Us
                   </div>
                 </Link>
 
@@ -169,16 +144,6 @@ export default function Navbar() {
                   Knowledge Bank
                 </Link>
 
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    handleScrollToSection('about');
-                  }}
-                  className="block w-full text-left rounded-lg px-4 py-3 text-base font-semibold text-brand-blue-900 hover:bg-blue-50 transition-all duration-200 transform hover:translate-x-1"
-                >
-                  About Us
-                </button>
-                
                 <Link
                   to="/e-visiting-card"
                   className="block rounded-lg px-4 py-3 text-base font-semibold text-brand-blue-900 hover:bg-blue-50 transition-all duration-200 transform hover:translate-x-1"
@@ -187,15 +152,15 @@ export default function Navbar() {
                   E-Visiting Card
                 </Link>
                 
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    handleScrollToSection('news');
-                  }}
-                  className="block w-full text-left rounded-lg px-4 py-3 text-base font-semibold text-brand-blue-900 hover:bg-blue-50 transition-all duration-200 transform hover:translate-x-1"
+                <a
+                  href="https://www.icai.org/category/announcements"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg px-4 py-3 text-base font-semibold text-brand-blue-900 hover:bg-blue-50 transition-all duration-200 transform hover:translate-x-1"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   News & Updates
-                </button>
+                </a>
                 
                 <Link
                   to="/query"

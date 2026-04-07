@@ -1,6 +1,6 @@
 const UtilitiesPage = () => (
     <div className="p-8">
-      <h1 className="text-3xl font-bold mb-6">Tax Utilities</h1>
+      <h1 className="text-3xl font-bold mb-6 text-white">Tax Utilities</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <div className="bg-white p-6 rounded-lg shadow-md">

@@ -1,8 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const KnowledgeBankPage = () => {
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('gst');
+
+  // Government resources with links
+  const govResources = [
+    {
+      id: 'gst',
+      name: 'Goods and Services Tax',
+      icon: '📦',
+      description: 'Explore comprehensive information about GST rates, compliance, forms, and latest updates from the official GST portal.',
+      url: 'https://www.gst.gov.in/',
+      color: 'from-blue-500 to-blue-600'
+    },
+    {
+      id: 'income-tax',
+      name: 'Income Tax Department',
+      icon: '💼',
+      description: 'Access income tax filing, slabs, deductions, and all resources from the official Income Tax India portal.',
+      url: 'https://incometaxindia.gov.in/Pages/default.aspx',
+      color: 'from-green-500 to-green-600'
+    },
+    {
+      id: 'tds',
+      name: 'TDS Compliance Portal',
+      icon: '📊',
+      description: 'Complete TDS information, rates, quarterly returns, payment procedures, and compliance guidelines.',
+      url: 'https://contents.tdscpc.gov.in/en/taxpayer-home.html',
+      color: 'from-purple-500 to-purple-600'
+    },
+    {
+      id: 'mca',
+      name: 'Ministry Of Corporate Affairs',
+      icon: '🏢',
+      description: 'Corporate governance, MCA compliance, ROC filings, company law updates, and corporate regulations.',
+      url: 'https://www.mca.gov.in/content/mca/global/en/home.html',
+      color: 'from-red-500 to-red-600'
+    },
+    {
+      id: 'news',
+      name: 'News & Updates',
+      icon: '📰',
+      description: 'Stay informed with the latest tax news, policy updates, and official announcements from the Income Tax Department.',
+      url: 'https://www.icai.org/category/announcements',
+      color: 'from-orange-500 to-orange-600'
+    }
+  ];
+
+  const currentResource = govResources.find(r => r.id === activeTab);
 
   // Function to handle navigation to different sections
   const handleNavigateToSection = (path, sectionName) => {
@@ -89,6 +136,57 @@ const KnowledgeBankPage = () => {
             Access our comprehensive collection of tax tools, legal documents, calculators, and compliance resources. 
             Click on any section below to explore detailed information and resources tailored to your needs.
           </p>
+        </div>
+
+        {/* Government Resources Section */}
+        <div className="mb-16 animate-fade-in-up bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/20">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">Government Resources & Official Portals</h2>
+          
+          {/* Tabs */}
+          <div className="flex flex-wrap gap-3 mb-8 justify-center">
+            {govResources.map((resource) => (
+              <button
+                key={resource.id}
+                onClick={() => setActiveTab(resource.id)}
+                className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
+                  activeTab === resource.id
+                    ? `bg-gradient-to-r ${resource.color} text-white shadow-lg scale-105`
+                    : 'bg-white/10 text-white border border-white/30 hover:border-blue-400/50 hover:bg-white/20'
+                }`}
+              >
+                <span className="mr-2">{resource.icon}</span>
+                {resource.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Tab Content */}
+          {currentResource && (
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/20 animate-fade-in-up">
+              <div className="flex items-start justify-between mb-6 flex-wrap gap-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-3">{currentResource.name}</h3>
+                  <p className="text-brand-blue-100 text-lg leading-relaxed max-w-3xl">
+                    {currentResource.description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-6 border-t border-white/20">
+                <a 
+                  href={currentResource.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-500 to-brand-blue-600 text-white font-bold rounded-lg hover:from-blue-600 hover:to-brand-blue-700 transition-all duration-300 hover:shadow-lg group"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span className="group-hover:translate-x-1 transition-transform">Visit Official Portal</span>
+                </a>
+              </div>
+            </div>
+          )}
         </div>
         
         {/* Knowledge Bank Grid */}

@@ -1,6 +1,6 @@
 const ActsPage = () => (
     <div className="p-8">
-      <h1 className="text-3xl font-bold mb-6">Tax Acts & Legislations</h1>
+      <h1 className="text-3xl font-bold mb-6 text-white">Tax Acts & Legislations</h1>
       
       <div className="bg-white p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-xl font-semibold mb-4">Major Tax Acts</h2>

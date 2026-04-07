@@ -1,6 +1,6 @@
 const BulletinsPage = () => (
     <div className="p-8">
-      <h1 className="text-3xl font-bold mb-6">Tax Bulletins</h1>
+      <h1 className="text-3xl font-bold mb-6 text-white">Tax Bulletins</h1>
       <div className="bg-white p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-xl font-semibold mb-4">Latest Updates</h2>
         

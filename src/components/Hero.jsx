@@ -155,7 +155,7 @@ const Hero = () => {
               
               <div className="space-y-4 text-brand-blue-100 leading-relaxed">
                 <p className="text-lg">
-                  The Chartered Accountants have been a significant part of not just the Indian economy but also of all the companies in the country which plays a crucial role in ensuring financial health. A Chartered Accountant is a professional who provides financial and tax services to individuals, businesses, and organizations. They are also known as Certified Public Accountants (CAPs). CA in Jaipur works in all areas of finance, including auditing, taxation, financial planning, etc.
+                  The Chartered Accountants have been a significant part of not just the Indian economy but also of all the companies in the country which plays a crucial role in ensuring financial health. A Chartered Accountant is a professional who provides financial and tax services to individuals, businesses, and organizations. They are also known as Certified Public Accountants (CPAs). CA in Jaipur works in all areas of finance, including auditing, taxation, financial planning, etc.
                 </p>
                 
                 <p className="text-lg">
@@ -163,7 +163,7 @@ const Hero = () => {
                 </p>
 
                 <p className="text-lg">
-                  Led by CA Nikhil Saraswat, the firm brings strong experience in audit, taxation, and financial management, including exposure to international accounting practices.
+                  Led by CA Nikhil Saraswat, the firm brings strong experience in accounting, audit, taxation, and financial management, including exposure to international accounting practices.
                 </p>
 
                 <p className="text-lg">

@@ -14,7 +14,6 @@ import BulletinsPage from './components/Bulletins';
 import UtilitiesPage from "./components/Utilities";
 import ActsPage from "./components/Acts";
 import RulesPage from "./components/Rules";
-import AboutPage from "./components/About";
 import FormsPage from "./components/Forms";
 import KnowledgeBankPage from './components/KnowledgeBankPage';
 
@@ -56,8 +55,7 @@ function AppContent() {
           <Route path="/utilities" element={<UtilitiesPage />} /> 
           <Route path="/acts" element={<ActsPage />} /> 
           <Route path="/rules" element={<RulesPage />} /> 
-          <Route path="/forms" element={<FormsPage />} /> 
-          <Route path="/about" element={<AboutPage />} />
+          <Route path="/forms" element={<FormsPage />} />
         </Routes>
       </main>
       <Footer />

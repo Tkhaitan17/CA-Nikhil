@@ -184,9 +184,14 @@ const GSTCalculator = () => {
                     className="w-full p-2 border border-white/20 rounded bg-white/10 text-white text-xs focus:outline-none focus:border-blue-400"
                     value={row.typeOfSale}
                     onChange={(e) => handleChange(row.id, 'typeOfSale', e.target.value)}
+                    style={{
+                      backgroundColor: 'rgba(15, 55, 105, 0.8)',
+                      color: 'white',
+                      padding: '8px'
+                    }}
                   >
                     {typeOptions.map(option => (
-                      <option key={option} value={option}>{option}</option>
+                      <option key={option} value={option} style={{ backgroundColor: '#0f3769', color: 'white' }}>{option}</option>
                     ))}
                   </select>
                 </td>
@@ -195,9 +200,14 @@ const GSTCalculator = () => {
                     className="w-full p-2 border border-white/20 rounded bg-white/10 text-white text-xs focus:outline-none focus:border-blue-400"
                     value={row.rateOfTax}
                     onChange={(e) => handleChange(row.id, 'rateOfTax', e.target.value.replace('%', ''))}
+                    style={{
+                      backgroundColor: 'rgba(15, 55, 105, 0.8)',
+                      color: 'white',
+                      padding: '8px'
+                    }}
                   >
                     {taxRateOptions.map(option => (
-                      <option key={option} value={option}>{option}</option>
+                      <option key={option} value={option} style={{ backgroundColor: '#0f3769', color: 'white' }}>{option}</option>
                     ))}
                   </select>
                 </td>
@@ -441,13 +451,17 @@ const TDSCalculator = () => {
             className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white focus:outline-none focus:border-purple-400 transition-all duration-300"
             value={type}
             onChange={(e) => setType(e.target.value)}
+            style={{
+              backgroundColor: 'rgba(15, 55, 105, 0.8)',
+              color: 'white'
+            }}
           >
-            <option value="salary">Salary</option>
-            <option value="freelance">Freelance Income</option>
-            <option value="commission">Commission</option>
-            <option value="interest">Interest</option>
-            <option value="dividend">Dividend</option>
-            <option value="contractor">Contractor Payment</option>
+            <option value="salary" style={{ backgroundColor: '#0f3769', color: 'white' }}>Salary</option>
+            <option value="freelance" style={{ backgroundColor: '#0f3769', color: 'white' }}>Freelance Income</option>
+            <option value="commission" style={{ backgroundColor: '#0f3769', color: 'white' }}>Commission</option>
+            <option value="interest" style={{ backgroundColor: '#0f3769', color: 'white' }}>Interest</option>
+            <option value="dividend" style={{ backgroundColor: '#0f3769', color: 'white' }}>Dividend</option>
+            <option value="contractor" style={{ backgroundColor: '#0f3769', color: 'white' }}>Contractor Payment</option>
           </select>
         </div>
       </div>
@@ -729,11 +743,15 @@ const CompoundInterestCalculator = () => {
             className="w-full p-3 border-2 border-white/30 rounded-lg bg-white/10 text-white focus:outline-none focus:border-indigo-400 transition-all duration-300"
             value={frequency}
             onChange={(e) => setFrequency(e.target.value)}
+            style={{
+              backgroundColor: 'rgba(15, 55, 105, 0.8)',
+              color: 'white'
+            }}
           >
-            <option value="1">Annually</option>
-            <option value="2">Semi-Annually</option>
-            <option value="4">Quarterly</option>
-            <option value="12">Monthly</option>
+            <option value="1" style={{ backgroundColor: '#0f3769', color: 'white' }}>Annually</option>
+            <option value="2" style={{ backgroundColor: '#0f3769', color: 'white' }}>Semi-Annually</option>
+            <option value="4" style={{ backgroundColor: '#0f3769', color: 'white' }}>Quarterly</option>
+            <option value="12" style={{ backgroundColor: '#0f3769', color: 'white' }}>Monthly</option>
           </select>
         </div>
       </div>

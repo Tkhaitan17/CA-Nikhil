@@ -27,15 +27,22 @@ const Navbar = () => {
         <Link to="/" className="block group mb-4 md:mb-0">
           <div className="flex items-center space-x-4 transform transition-all duration-300 group-hover:-translate-y-1">
             <div className="relative">
+              <img
+                src="/icai.jpeg"
+                alt="ICAI Logo"
+                className="relative w-16 h-12 sm:w-20 sm:h-16 lg:w-24 lg:h-20 rounded-lg transform group-hover:scale-105 transition-transform duration-300 shadow-lg object-cover"
+              />
+            </div>
+            <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-300 rounded-xl blur opacity-0 group-hover:opacity-60 transition duration-300"></div>
               <img
                 src="/logo.png"
                 alt="Logo"
-                className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-lg transform group-hover:scale-105 transition-transform duration-300 shadow-lg"
+                className="relative w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-lg transform group-hover:scale-105 transition-transform duration-300 shadow-lg"
               />
             </div>
             <div className="text-white text-base sm:text-lg lg:text-xl font-bold tracking-wide">
-              N SARASWAT & CO.
+              N. SARASWAT & CO.
               <br />
               <span className="text-brand-blue-300 text-xs sm:text-sm lg:text-base font-semibold">Chartered Accountants</span>
             </div>
